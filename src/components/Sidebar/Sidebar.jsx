@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import HeaderLinks from "../Header/HeaderLinks.jsx";
 
-import imagine from "../../assets/img/sidebar-3.jpg";
-import logo from "../../assets/img/reactlogo.png";
+import imagine from "../../assets/img/sidebar-2.jpg";
+import logo from "../../assets/img/tethys_logo_inverse.png";
 
 import dashboardRoutes from "../../routes/dashboard.jsx";
 
@@ -33,7 +33,7 @@ class Sidebar extends Component {
       <div
         id="sidebar"
         className="sidebar"
-        data-color="black"
+        data-color="azure"
         data-image={imagine}
       >
         <div className="sidebar-background" style={sidebarBackground} />
@@ -43,14 +43,14 @@ class Sidebar extends Component {
             className="simple-text logo-mini"
           >
             <div className="logo-img">
-              <img src={logo} alt="logo_image" />
+             <img src={logo} alt="logo_image" />
             </div>
           </a>
           <a
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
           >
-            Creative Tim
+            Tethys App Warehouse
           </a>
         </div>
         <div className="sidebar-wrapper">

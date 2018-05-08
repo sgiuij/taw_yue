@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Grid } from "react-bootstrap";
+import React, { Component } from "react"
+import { Grid } from "react-bootstrap"
 
 class Footer extends Component {
   render() {
@@ -9,28 +9,21 @@ class Footer extends Component {
           <nav className="pull-left">
             <ul>
               <li>
-                <a href="#pablo">Home</a>
+                <a href="//worldwater.byu.edu/">WorldWater@BYU</a>
               </li>
               <li>
-                <a href="#pablo">Company</a>
-              </li>
-              <li>
-                <a href="#pablo">Portfolio</a>
-              </li>
-              <li>
-                <a href="#pablo">Blog</a>
+                <a href="//www.tethysplatform.org/">Tethys</a>
               </li>
             </ul>
           </nav>
           <p className="copyright pull-right">
             &copy; {new Date().getFullYear()}{" "}
-            <a href="http://www.creative-tim.com">Creative Tim</a>, made with
-            love for a better web
+            <a href="#">BYU Hydroinformatics Lab?</a>, created with love
           </p>
         </Grid>
       </footer>
-    );
+    )
   }
 }
 
-export default Footer;
+export default Footer

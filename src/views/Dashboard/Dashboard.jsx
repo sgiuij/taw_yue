@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
-import { Grid, Row, Col } from "react-bootstrap";
+import React, { Component } from "react"
+import ChartistGraph from "react-chartist"
+import { Grid, Row, Col } from "react-bootstrap"
 
-import { Card } from "../../components/Card/Card.jsx";
-import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
-import { Tasks } from "../../components/Tasks/Tasks.jsx";
+import { Card } from "../../components/Card/Card.jsx"
+import { StatsCard } from "../../components/StatsCard/StatsCard.jsx"
+import { Tasks } from "../../components/Tasks/Tasks.jsx"
 import {
   dataPie,
   legendPie,
@@ -16,18 +16,22 @@ import {
   optionsBar,
   responsiveBar,
   legendBar
-} from "../../variables/Variables.jsx";
+} from "../../variables/Variables.jsx"
+
+const appImage = {
+  height: "35%"
+}
 
 class Dashboard extends Component {
   createLegend(json) {
-    var legend = [];
+    var legend = []
     for (var i = 0; i < json["names"].length; i++) {
-      var type = "fa fa-circle text-" + json["types"][i];
-      legend.push(<i className={type} key={i} />);
-      legend.push(" ");
-      legend.push(json["names"][i]);
+      var type = "fa fa-circle text-" + json["types"][i]
+      legend.push(<i className={type} key={i} />)
+      legend.push(" ")
+      legend.push(json["names"][i])
     }
-    return legend;
+    return legend
   }
   render() {
     return (
@@ -36,45 +40,120 @@ class Dashboard extends Component {
           <Row>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="Capacity"
-                statsValue="105GB"
+                bigIcon={<i className="pe-7s-albums text-info" />}
+                statsText="Number of Approved Apps"
+                statsValue="10"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Revenue"
-                statsValue="$1,345"
+                bigIcon={<i className="pe-7s-news-paper text-success" />}
+                statsText="Apps added in last 7 days"
+                statsValue="2"
                 statsIcon={<i className="fa fa-calendar-o" />}
                 statsIconText="Last day"
               />
             </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last hour"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Followers"
-                statsValue="+45"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
+          </Row>
+          <Row>
+            <Col md={12}>
+              <Card
+                id="chartHours"
+                title="Apps"
+                category="Top Rated Tethys Apps"
+                content={
+                  <Row>
+                    <Col lg={3} sm={6}>
+                      <Card
+                        title="StreamFlow Prediction Tool"
+                        category="App Category"
+                        stats="App Rating : 5.0"
+                        statsIcon="pe-7s-star"
+                        content={
+                          <div className="image" style={appImage}>
+                            <img src="http://tethys.byu.edu/static/streamflow_prediction_tool/images/logo.png" />
+                          </div>
+                        }
+                      />
+                    </Col>
+
+                    <Col lg={3} sm={6}>
+                      <Card
+                        title="GRACE"
+                        category="App Category"
+                        stats="App Rating : 5.0"
+                        statsIcon="pe-7s-star"
+                        content={
+                          <div className="image" style={appImage}>
+                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
+                          </div>
+                        }
+                      />
+                    </Col>
+
+                    <Col lg={3} sm={6}>
+                      <Card
+                        title="GRACE"
+                        category="App Category"
+                        stats="App Rating : 5.0"
+                        statsIcon="pe-7s-star"
+                        content={
+                          <div className="image" style={appImage}>
+                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
+                          </div>
+                        }
+                      />
+                    </Col>
+                    <Col lg={3} sm={6}>
+                      <Card
+                        title="GRACE"
+                        category="App Category"
+                        stats="App Rating : 5.0"
+                        statsIcon="pe-7s-star"
+                        content={
+                          <div className="image" style={appImage}>
+                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
+                          </div>
+                        }
+                      />
+                    </Col>
+                    <Col lg={3} sm={6}>
+                      <Card
+                        title="GRACE"
+                        category="App Category"
+                        stats="App Rating : 5.0"
+                        statsIcon="pe-7s-star"
+                        content={
+                          <div className="image" style={appImage}>
+                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
+                          </div>
+                        }
+                      />
+                    </Col>
+                    <Col lg={3} sm={6}>
+                      <Card
+                        title="GRACE"
+                        category="App Category"
+                        stats="App Rating : 5.0"
+                        statsIcon="pe-7s-star"
+                        content={
+                          <div className="image" style={appImage}>
+                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
+                          </div>
+                        }
+                      />
+                    </Col>
+                  </Row>
+                }
               />
             </Col>
           </Row>
-          <Row>
+          {/*<Row>
             <Col md={8}>
               <Card
-                statsIcon="fa fa-history"
+                statsIcon="pe-7s-star"
                 id="chartHours"
                 title="Users Behavior"
                 category="24 Hours performance"
@@ -144,7 +223,7 @@ class Dashboard extends Component {
                 title="Tasks"
                 category="Backend development"
                 stats="Updated 3 minutes ago"
-                statsIcon="fa fa-history"
+                statsIcon="pe-7s-star"
                 content={
                   <div className="table-full-width">
                     <table className="table">
@@ -154,11 +233,11 @@ class Dashboard extends Component {
                 }
               />
             </Col>
-          </Row>
+          </Row>*/}
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default Dashboard;
+export default Dashboard

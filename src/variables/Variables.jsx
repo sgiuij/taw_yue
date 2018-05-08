@@ -4,7 +4,7 @@
 // //
 //
 var defaultWidth =
-  window.screen.width > 768 ? window.screen.width * 1 / 3 : window.screen.width;
+  window.screen.width > 768 ? window.screen.width * 1 / 3 : window.screen.width
 
 var style = {
   Wrapper: {},
@@ -240,22 +240,22 @@ var style = {
       padding: 0
     }
   }
-};
+}
 
 //
 // //
 // // // For tables
 // //
 //
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
+const thArray = ["UserID", "Name", "Email", "User Level"]
 const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-];
+  ["1", "Dakota Rice", "abcd@abcd.com", "Admin"],
+  ["2", "Minerva Hooper", "abcd@abcd.com", "Developer"],
+  ["3", "Sage Rodriguez", "abcd@abcd.com", "Developer"],
+  ["4", "Philip Chaney", "abcd@abcd.com", "Tethys App Warehouse Governor"],
+  ["5", "Doris Greene", "abcd@abcd.com", "Tethys App Warehouse Governor"],
+  ["6", "Mason Porter", "abcd@abcd.com", "Standard User"]
+]
 
 //
 // //
@@ -465,7 +465,7 @@ const iconsArray = [
   "pe-7s-albums",
   "pe-7s-alarm",
   "pe-7s-airplay"
-];
+]
 
 //
 // //
@@ -476,11 +476,11 @@ const iconsArray = [
 var dataPie = {
   labels: ["40%", "20%", "40%"],
   series: [40, 20, 40]
-};
+}
 var legendPie = {
   names: ["Open", "Bounce", "Unsubscribe"],
   types: ["info", "danger", "warning"]
-};
+}
 
 // Data for Line Chart
 var dataSales = {
@@ -499,7 +499,7 @@ var dataSales = {
     [67, 152, 143, 240, 287, 335, 435, 437],
     [23, 113, 67, 108, 190, 239, 307, 308]
   ]
-};
+}
 var optionsSales = {
   low: 0,
   high: 800,
@@ -515,23 +515,23 @@ var optionsSales = {
   chartPadding: {
     right: 50
   }
-};
+}
 var responsiveSales = [
   [
     "screen and (max-width: 640px)",
     {
       axisX: {
         labelInterpolationFnc: function(value) {
-          return value[0];
+          return value[0]
         }
       }
     }
   ]
-];
+]
 var legendSales = {
   names: ["Open", "Click", "Click Second Time"],
   types: ["info", "danger", "warning"]
-};
+}
 
 // Data for Bar Chart
 var dataBar = {
@@ -553,14 +553,14 @@ var dataBar = {
     [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
     [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
   ]
-};
+}
 var optionsBar = {
   seriesBarDistance: 10,
   axisX: {
     showGrid: false
   },
   height: "245px"
-};
+}
 var responsiveBar = [
   [
     "screen and (max-width: 640px)",
@@ -568,16 +568,16 @@ var responsiveBar = [
       seriesBarDistance: 5,
       axisX: {
         labelInterpolationFnc: function(value) {
-          return value[0];
+          return value[0]
         }
       }
     }
   ]
-];
+]
 var legendBar = {
   names: ["Tesla Model S", "BMW 5 Series"],
   types: ["info", "danger"]
-};
+}
 
 module.exports = {
   style, // For notifications (App container and Notifications view)
@@ -594,4 +594,4 @@ module.exports = {
   optionsBar,
   responsiveBar,
   legendBar // For charts (Dashboard view)
-};
+}
