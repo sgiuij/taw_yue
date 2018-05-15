@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+  react:
+    container_name: react
+    build:
+      context: ./react/
+      dockerfile: Dockerfile
+    volumes:
+      - './react/:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    links:
+      - "hapi-taw:api"
+  hapi-taw:
+    build:
+      context: ./hapi/
+    # Disable mounting of volumes if packages are not installed locally.
+    volumes:
+      - ./hapi/:/app
+    env_file:
+      - ./hapi/bin/dev.env
+    ports:
+      - "3030:3030"
