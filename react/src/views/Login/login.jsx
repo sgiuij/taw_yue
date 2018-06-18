@@ -7,9 +7,11 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap"
+import { Redirect } from "react-router-dom"
 
 import { Card } from "../../components/Card/Card.jsx"
 import Button from "../../components/CustomButton/CustomButton.jsx"
+import { loginUser } from "../../store/Users"
 
 class Login extends Component {
   constructor(props, context) {
@@ -36,10 +38,25 @@ class Login extends Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.id]: e.target.value })
+    this.setState({ [e.target.id]: e.target.value.trim() })
+  }
+
+  handleClick(event) {
+    const creds = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.dispatch(loginUser(creds))
   }
 
   render() {
+    const { errorMessage, isAuthenticated } = this.props
+    const { from } = this.props.location.state || { from: { pathname: "/" } }
+
+    if (isAuthenticated) {
+      return <Redirect to={from} />
+    }
+
     return (
       <div className="content">
         <Grid fluid>
@@ -75,7 +92,16 @@ class Login extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Button bsStyle="info" pullRight fill type="submit">
+                    {errorMessage && (
+                      <Row>
+                        <p>{errorMessage}</p>
+                      </Row>
+                    )}
+                    <Button
+                      bsStyle="info"
+                      pullRight
+                      fill
+                      onClick={event => this.handleClick(event)}>
                       Login
                     </Button>
                     <div className="clearfix" />

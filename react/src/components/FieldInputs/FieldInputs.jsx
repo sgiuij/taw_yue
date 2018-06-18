@@ -32,6 +32,7 @@ export class FieldInputs extends Component {
               multiple={this.props.multiple}
               onChange={onChange}
               onBlur={onBlur}
+              {...props}
             />
           </Col>
         </FormGroup>

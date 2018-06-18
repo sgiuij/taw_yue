@@ -11,6 +11,22 @@ import { style } from "../../variables/Variables.jsx"
 
 import dashboardRoutes from "../../routes/dashboard.jsx"
 
+const renderMergedProps = (component, ...rest) => {
+  const finalProps = Object.assign({}, ...rest)
+  return React.createElement(component, finalProps)
+}
+
+const PropsRoute = ({ component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={routeProps => {
+        return renderMergedProps(component, routeProps, rest)
+      }}
+    />
+  )
+}
+
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -101,6 +117,7 @@ class Dashboard extends Component {
     }
   }
   render() {
+    const { dispatch, errorMessage, isAuthenticated } = this.props
     return (
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
@@ -125,7 +142,14 @@ class Dashboard extends Component {
               if (prop.redirect)
                 return <Redirect from={prop.path} to={prop.to} key={key} />
               return (
-                <Route path={prop.path} component={prop.component} key={key} />
+                <PropsRoute
+                  path={prop.path}
+                  component={prop.component}
+                  dispatch={dispatch}
+                  errorMessage={errorMessage}
+                  isAuthenticated={isAuthenticated}
+                  key={key}
+                />
               )
             })}
           </Switch>
@@ -147,6 +171,3 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(Dashboard)
-
-
-

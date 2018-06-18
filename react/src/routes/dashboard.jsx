@@ -1,7 +1,7 @@
 import Dashboard from "../views/Dashboard/Dashboard"
 import UserProfile from "../views/UserProfile/UserProfile"
-import Login from "../views/Login/login"
-import ManageUsers from "../views/UserManagement/manageuser"
+import Login from "../views/Login/Login"
+import ManageUsers from "../views/UserManagement/ManageUser"
 import { AllApp, AppView, EditApp } from "../views/Apps"
 import AddApp from "../views/Apps/new"
 const dashboardRoutes = [
@@ -16,6 +16,13 @@ const dashboardRoutes = [
     name: "User Profile",
     icon: "pe-7s-user",
     component: UserProfile
+  },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "pe-7s-unlock",
+    component: Login,
+    noShow: true
   },
   {
     path: "/manageusers",

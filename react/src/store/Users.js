@@ -1,6 +1,6 @@
 import * as actions from "./Users/actions"
 
-const apiUrl = `http://localhost:3001/sessions/create`
+const apiUrl = `http://localhost:3030/taw-hapi/api/1.0/user/session/create`
 
 export function loginUser(creds) {
 	let config = {
@@ -11,24 +11,24 @@ export function loginUser(creds) {
 
 	return dispatch => {
 		// We dispatch requestLogin to kickoff the call to the API
-		dispatch(requestLogin(creds))
+		dispatch(actions.requestLogin(creds))
 
 		return fetch(apiUrl, config)
-			.then(response =>
-				response.json().then(user => ({ user, response }))
-			)
+			.then(response => {
+				return response.json().then(user => ({ user, response }))
+			})
 			.then(({ user, response }) => {
 				if (!response.ok) {
 					// If there was a problem, we want to
 					// dispatch the error condition
-					dispatch(loginError(user.message))
+					dispatch(actions.loginError(user.message))
 					return Promise.reject(user)
 				} else {
 					// If login was successful, set the token in local storage
 					localStorage.setItem("id_token", user.id_token)
 					localStorage.setItem("id_token", user.access_token)
 					// Dispatch the success action
-					dispatch(receiveLogin(user))
+					dispatch(actions.receiveLogin(user))
 				}
 			})
 			.catch(err => console.log("Error: ", err))
@@ -37,9 +37,9 @@ export function loginUser(creds) {
 
 export function logoutUser() {
 	return dispatch => {
-		dispatch(requestLogout())
+		dispatch(actions.requestLogout())
 		localStorage.removeItem("id_token")
 		localStorage.removeItem("access_token")
-		dispatch(receiveLogout())
+		dispatch(actions.receiveLogout())
 	}
 }

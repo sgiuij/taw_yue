@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 class HeaderLinks extends Component {
   render() {
-    const { dispatch, isAuthenticated, errorMessage } = this.props
+    const { isAuthenticated } = this.props
 
     const notification = (
       <div>

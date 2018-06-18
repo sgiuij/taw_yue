@@ -27,7 +27,7 @@ export function loginError(message) {
 	}
 }
 
-function requestLogout() {
+export function requestLogout() {
 	return {
 		type: types.LOGOUT_REQUEST,
 		isFetching: true,
@@ -35,7 +35,7 @@ function requestLogout() {
 	}
 }
 
-function receiveLogout() {
+export function receiveLogout() {
 	return {
 		type: types.LOGOUT_SUCCESS,
 		isFetching: false,
