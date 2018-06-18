@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import NotificationSystem from "react-notification-system"
+import { connect } from "react-redux"
 
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
@@ -20,70 +21,70 @@ class Dashboard extends Component {
     }
   }
   handleNotificationClick(position) {
-    var color = Math.floor(Math.random() * 4 + 1)
-    var level
-    switch (color) {
-      case 1:
-        level = "success"
-        break
-      case 2:
-        level = "warning"
-        break
-      case 3:
-        level = "error"
-        break
-      case 4:
-        level = "info"
-        break
-      default:
-        break
-    }
-    this.state._notificationSystem.addNotification({
-      title: <span data-notify="icon" className="pe-7s-gift" />,
-      message: (
-        <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
-        </div>
-      ),
-      level: level,
-      position: position,
-      autoDismiss: 15
-    })
+    // var color = Math.floor(Math.random() * 4 + 1)
+    // var level
+    // switch (color) {
+    //   case 1:
+    //     level = "success"
+    //     break
+    //   case 2:
+    //     level = "warning"
+    //     break
+    //   case 3:
+    //     level = "error"
+    //     break
+    //   case 4:
+    //     level = "info"
+    //     break
+    //   default:
+    //     break
+    // }
+    // this.state._notificationSystem.addNotification({
+    //   title: <span data-notify="icon" className="pe-7s-gift" />,
+    //   message: (
+    //     <div>
+    //       Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
+    //       every web developer.
+    //     </div>
+    //   ),
+    //   level: level,
+    //   position: position,
+    //   autoDismiss: 15
+    // })
   }
   componentDidMount() {
     this.setState({ _notificationSystem: this.refs.notificationSystem })
-    var _notificationSystem = this.refs.notificationSystem
-    var color = Math.floor(Math.random() * 4 + 1)
-    var level
-    switch (color) {
-      case 1:
-        level = "success"
-        break
-      case 2:
-        level = "warning"
-        break
-      case 3:
-        level = "error"
-        break
-      case 4:
-        level = "info"
-        break
-      default:
-        break
-    }
-    _notificationSystem.addNotification({
-      title: <span data-notify="icon" className="pe-7s-gift" />,
-      message: (
-        <div>
-          Welcome to <b>Tethys App Warehouse</b> - a place to discover and share
-          Tethys Applications
-        </div>
-      ),
-      level: level,
-      position: "tr",
-      autoDismiss: 20
-    })
+    // var _notificationSystem = this.refs.notificationSystem
+    // var color = Math.floor(Math.random() * 4 + 1)
+    // var level
+    // switch (color) {
+    //   case 1:
+    //     level = "success"
+    //     break
+    //   case 2:
+    //     level = "warning"
+    //     break
+    //   case 3:
+    //     level = "error"
+    //     break
+    //   case 4:
+    //     level = "info"
+    //     break
+    //   default:
+    //     break
+    // }
+    // _notificationSystem.addNotification({
+    //   title: <span data-notify="icon" className="pe-7s-gift" />,
+    //   message: (
+    //     <div>
+    //       Welcome to <b>Tethys App Warehouse</b> - a place to discover and share
+    //       Tethys Applications
+    //     </div>
+    //   ),
+    //   level: level,
+    //   position: "tr",
+    //   autoDismiss: 20
+    // })
   }
   componentDidUpdate(e) {
     if (
@@ -135,4 +136,17 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+function mapStateToProps(state, ownProps) {
+  const {
+    user: { isAuthenticated, errorMessage }
+  } = state
+  return {
+    isAuthenticated,
+    errorMessage
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)
+
+
+

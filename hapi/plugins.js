@@ -1,20 +1,20 @@
-'use strict'
+"use strict"
 
 /**
  * Vendor modules
  */
-const Inert = require('inert')
-const Vision = require('vision')
-const HapiSwagger = require('hapi-swagger')
-const Good = require('good')
-const config = require('config')
+const Inert = require("inert")
+const Vision = require("vision")
+const HapiSwagger = require("hapi-swagger")
+const Good = require("good")
+const config = require("config")
 
 /**
  * Internal modules
  */
-const Package = require('./package.json')
+const Package = require("./package.json")
 
-const DEVELOPMENT = 'development'
+const DEVELOPMENT = "development"
 
 /**
  * exports array of plugins with configuration.
@@ -22,30 +22,34 @@ const DEVELOPMENT = 'development'
  */
 let plugins = []
 
-if (config.util.getEnv('NODE_ENV') === DEVELOPMENT) {
-
+if (config.util.getEnv("NODE_ENV") === DEVELOPMENT) {
   // add hapi swagger integration
-  plugins = plugins.concat([Inert,
+  plugins = plugins.concat([
+    Inert,
     Vision,
     {
       register: HapiSwagger,
       options: {
         info: {
-          'title': Package.description,
-          'version': Package.version
+          title: Package.description,
+          version: Package.version
         },
         pathPrefixSize: 4
       }
-    }])
+    }
+  ])
 
   // add good console for log reporting
   plugins.push({
     register: Good,
     options: {
       reporters: {
-        console: [{
-          module: 'good-console'
-        }, 'stdout']
+        console: [
+          {
+            module: "good-console"
+          },
+          "stdout"
+        ]
       }
     }
   })

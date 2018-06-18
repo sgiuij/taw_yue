@@ -13,9 +13,9 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=development
-    links:
-      - "hapi-taw:api"
+      - CHOKIDAR_USEPOLLING=true
   hapi-taw:
+    container_name: hapi
     build:
       context: ./hapi/
     # Disable mounting of volumes if packages are not installed locally.
@@ -25,3 +25,9 @@ services:
       - ./hapi/bin/dev.env
     ports:
       - "3030:3030"
+  mongodb:
+      image: mongo:latest
+      ports:
+      - '27017:27017'
+      volumes:
+        - ./db:/data/db

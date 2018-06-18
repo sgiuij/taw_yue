@@ -1,22 +1,10 @@
 import React, { Component } from "react"
-import ChartistGraph from "react-chartist"
 import { Grid, Row, Col } from "react-bootstrap"
 
 import { Card } from "../../components/Card/Card.jsx"
 import { StatsCard } from "../../components/StatsCard/StatsCard.jsx"
-import { Tasks } from "../../components/Tasks/Tasks.jsx"
-import {
-  dataPie,
-  legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar
-} from "../../variables/Variables.jsx"
+
+import { connect } from "react-redux"
 
 const appImage = {
   height: "35%"
@@ -65,179 +53,39 @@ class Dashboard extends Component {
                 category="Top Rated Tethys Apps"
                 content={
                   <Row>
-                    <Col lg={3} sm={6}>
-                      <Card
-                        title="StreamFlow Prediction Tool"
-                        category="App Category"
-                        stats="App Rating : 5.0"
-                        statsIcon="pe-7s-star"
-                        content={
-                          <div className="image" style={appImage}>
-                            <img src="http://tethys.byu.edu/static/streamflow_prediction_tool/images/logo.png" />
-                          </div>
-                        }
-                      />
-                    </Col>
-
-                    <Col lg={3} sm={6}>
-                      <Card
-                        title="GRACE"
-                        category="App Category"
-                        stats="App Rating : 5.0"
-                        statsIcon="pe-7s-star"
-                        content={
-                          <div className="image" style={appImage}>
-                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
-                          </div>
-                        }
-                      />
-                    </Col>
-
-                    <Col lg={3} sm={6}>
-                      <Card
-                        title="GRACE"
-                        category="App Category"
-                        stats="App Rating : 5.0"
-                        statsIcon="pe-7s-star"
-                        content={
-                          <div className="image" style={appImage}>
-                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
-                          </div>
-                        }
-                      />
-                    </Col>
-                    <Col lg={3} sm={6}>
-                      <Card
-                        title="GRACE"
-                        category="App Category"
-                        stats="App Rating : 5.0"
-                        statsIcon="pe-7s-star"
-                        content={
-                          <div className="image" style={appImage}>
-                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
-                          </div>
-                        }
-                      />
-                    </Col>
-                    <Col lg={3} sm={6}>
-                      <Card
-                        title="GRACE"
-                        category="App Category"
-                        stats="App Rating : 5.0"
-                        statsIcon="pe-7s-star"
-                        content={
-                          <div className="image" style={appImage}>
-                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
-                          </div>
-                        }
-                      />
-                    </Col>
-                    <Col lg={3} sm={6}>
-                      <Card
-                        title="GRACE"
-                        category="App Category"
-                        stats="App Rating : 5.0"
-                        statsIcon="pe-7s-star"
-                        content={
-                          <div className="image" style={appImage}>
-                            <img src="http://tethys.byu.edu/static/grace/images/logo.jpg" />
-                          </div>
-                        }
-                      />
-                    </Col>
+                    {this.props.apps.map((app, i) => (
+                      <Col lg={3} sm={6} key={i}>
+                        <Card
+                          title={app.name}
+                          category={app.type}
+                          stats="App Rating : {app.rating}"
+                          statsIcon="pe-7s-star"
+                          content={
+                            <div className="image" style={appImage}>
+                              <img alt="appIcon" src={app.imageUrl} />
+                            </div>
+                          }
+                        />
+                      </Col>
+                    ))}
                   </Row>
                 }
               />
             </Col>
           </Row>
-          {/*<Row>
-            <Col md={8}>
-              <Card
-                statsIcon="pe-7s-star"
-                id="chartHours"
-                title="Users Behavior"
-                category="24 Hours performance"
-                stats="Updated 3 minutes ago"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataSales}
-                      type="Line"
-                      options={optionsSales}
-                      responsiveOptions={responsiveSales}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendSales)}</div>
-                }
-              />
-            </Col>
-            <Col md={4}>
-              <Card
-                statsIcon="fa fa-clock-o"
-                title="Email Statistics"
-                category="Last Campaign Performance"
-                stats="Campaign sent 2 days ago"
-                content={
-                  <div
-                    id="chartPreferences"
-                    className="ct-chart ct-perfect-fourth"
-                  >
-                    <ChartistGraph data={dataPie} type="Pie" />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendPie)}</div>
-                }
-              />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={6}>
-              <Card
-                id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
-            </Col>
-
-            <Col md={6}>
-              <Card
-                title="Tasks"
-                category="Backend development"
-                stats="Updated 3 minutes ago"
-                statsIcon="pe-7s-star"
-                content={
-                  <div className="table-full-width">
-                    <table className="table">
-                      <Tasks />
-                    </table>
-                  </div>
-                }
-              />
-            </Col>
-          </Row>*/}
         </Grid>
       </div>
     )
   }
 }
 
-export default Dashboard
+function mapStateToProps(state, ownProps) {
+  const {
+    warehouse: { apps }
+  } = state
+  return {
+    apps
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)

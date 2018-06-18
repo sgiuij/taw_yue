@@ -18,7 +18,8 @@ class Footer extends Component {
           </nav>
           <p className="copyright pull-right">
             &copy; {new Date().getFullYear()}{" "}
-            <a href="#">BYU Hydroinformatics Lab?</a>, created with love
+            <a href="http://worldwater.byu.edu/">BYU Hydroinformatics Lab?</a>,
+            created with love
           </p>
         </Grid>
       </footer>

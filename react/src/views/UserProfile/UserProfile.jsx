@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import {
   Grid,
   Row,
@@ -6,14 +6,14 @@ import {
   FormGroup,
   ControlLabel,
   FormControl
-} from "react-bootstrap";
+} from "react-bootstrap"
 
-import { Card } from "../../components/Card/Card.jsx";
-import { FormInputs } from "../../components/FormInputs/FormInputs.jsx";
-import { UserCard } from "../../components/UserCard/UserCard.jsx";
-import Button from "../../components/CustomButton/CustomButton.jsx";
+import { Card } from "../../components/Card/Card.jsx"
+import { FormInputs } from "../../components/FormInputs/FormInputs.jsx"
+import { UserCard } from "../../components/UserCard/UserCard.jsx"
+import Button from "../../components/CustomButton/CustomButton.jsx"
 
-import avatar from "../../assets/img/faces/face-3.jpg";
+import avatar from "../../assets/img/faces/face-3.jpg"
 
 class UserProfile extends Component {
   render() {
@@ -35,7 +35,7 @@ class UserProfile extends Component {
                           bsClass: "form-control",
                           placeholder: "Username",
                           defaultValue: "michael23",
-                          disabled:true
+                          disabled: true
                         },
                         {
                           label: "Email address",
@@ -92,11 +92,7 @@ class UserProfile extends Component {
                 avatar={avatar}
                 name="Mike Andrew"
                 userName="michael24"
-                description={
-                  <span>
-                    I do water stuff
-                  </span>
-                }
+                description={<span>I do water stuff</span>}
                 socials={
                   <div>
                     <Button simple>
@@ -113,10 +109,10 @@ class UserProfile extends Component {
               />
             </Col>
           </Row>
-        </Grid>>
+        </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default UserProfile;
+export default UserProfile

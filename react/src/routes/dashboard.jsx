@@ -2,13 +2,8 @@ import Dashboard from "../views/Dashboard/Dashboard"
 import UserProfile from "../views/UserProfile/UserProfile"
 import Login from "../views/Login/login"
 import ManageUsers from "../views/UserManagement/manageuser"
-
-import TableList from "../views/TableList/TableList"
-import Typography from "../views/Typography/Typography"
-import Icons from "../views/Icons/Icons"
-import Maps from "../views/Maps/Maps"
-import Notifications from "../views/Notifications/Notifications"
-
+import { AllApp, AppView, EditApp } from "../views/Apps"
+import AddApp from "../views/Apps/new"
 const dashboardRoutes = [
   {
     path: "/landing",
@@ -23,38 +18,47 @@ const dashboardRoutes = [
     component: UserProfile
   },
   {
-    path: "/login",
-    name: "Login",
-    icon: "pe-7s-unlock",
-    component: Login
-  },
-  {
     path: "/manageusers",
     name: "Manage Users",
     icon: "pe-7s-users",
     component: ManageUsers
   },
-  // {
-  //   path: "/table",
-  //   name: "Table List",
-  //   icon: "pe-7s-note2",
-  //   component: TableList
-  // },
-  // {
-  //   path: "/typography",
-  //   name: "Typography",
-  //   icon: "pe-7s-news-paper",
-  //   component: Typography
-  // },
-  // { path: "/icons", name: "Icons", icon: "pe-7s-science", component: Icons },
-  // { path: "/maps", name: "Maps", icon: "pe-7s-map-marker", component: Maps },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "pe-7s-bell",
-  //   component: Notifications
-  // },
-  { redirect: true, path: "/", to: "/landing", name: "Home" }
+  {
+    path: "/apps",
+    name: "All Apps",
+    icon: "pe-7s-menu",
+    component: AllApp
+  },
+  {
+    path: "/apps",
+    name: "All Apps",
+    icon: "pe-7s-menu",
+    component: AllApp
+  },
+  {
+    path: "/app/new",
+    name: "New App",
+    icon: "pe-7s-menu",
+    component: AddApp
+  },
+  {
+    path: "/app/:appid",
+    name: "All Apps",
+    icon: "pe-7s-menu",
+    component: AppView
+  },
+  {
+    path: "/app/edit/:appid",
+    name: "Edit App",
+    icon: "pe-7s-menu",
+    component: EditApp
+  },
+  {
+    redirect: true,
+    path: "/",
+    to: "/landing",
+    name: "Home"
+  }
 ]
 
 export default dashboardRoutes

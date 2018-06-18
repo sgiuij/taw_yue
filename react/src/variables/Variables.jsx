@@ -579,6 +579,37 @@ var legendBar = {
   types: ["info", "danger"]
 }
 
+const appList = [
+  {
+    name: `StreamFlow Prediction Tool`,
+    type: `Hydrological App`,
+    imageUrl: `http://tethys.byu.edu/static/streamflow_prediction_tool/images/logo.png`,
+    rating: 5.0,
+    id: 1
+  },
+  {
+    name: `Grace`,
+    type: `Streamflow`,
+    imageUrl: `http://tethys.byu.edu/static/grace/images/logo.jpg`,
+    rating: 5.0,
+    id: 2
+  },
+  {
+    name: `StreamFlow Prediction Tool`,
+    type: `App`,
+    imageUrl: `http://tethys.byu.edu/static/streamflow_prediction_tool/images/logo.png`,
+    rating: 5.0,
+    id: 3
+  },
+  {
+    name: `Grace`,
+    type: `App`,
+    imageUrl: `http://tethys.byu.edu/static/grace/images/logo.jpg`,
+    rating: 5.0,
+    id: 4
+  }
+]
+
 module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,
@@ -593,5 +624,6 @@ module.exports = {
   dataBar,
   optionsBar,
   responsiveBar,
-  legendBar // For charts (Dashboard view)
+  legendBar, // For charts (Dashboard view)
+  appList
 }

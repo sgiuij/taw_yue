@@ -1,8 +1,11 @@
 import React, { Component } from "react"
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 class HeaderLinks extends Component {
   render() {
+    const { dispatch, isAuthenticated, errorMessage } = this.props
+
     const notification = (
       <div>
         <i className="fa fa-globe" />
@@ -32,9 +35,19 @@ class HeaderLinks extends Component {
             <MenuItem divider />
             <MenuItem eventKey={1.5}>Separated link</MenuItem>
           </NavDropdown>*/}
-          <NavItem eventKey={2} href="#">
-            LogIn/SignUp
-          </NavItem>
+
+          {!isAuthenticated && (
+            <NavItem eventKey={2} href="#">
+              <Link to="/login">Login</Link>
+            </NavItem>
+          )}
+
+          {isAuthenticated && (
+            <NavItem eventKey={2} href="#">
+              <Link to="/login">Logout</Link>
+            </NavItem>
+          )}
+
           <NavDropdown
             eventKey={2}
             title={notification}
