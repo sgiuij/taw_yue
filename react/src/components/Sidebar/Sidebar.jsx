@@ -29,6 +29,8 @@ class Sidebar extends Component {
     const sidebarBackground = {
       backgroundImage: "url(" + imagine + ")"
     }
+    const { isAuthenticated, userLevel } = this.props
+
     return (
       <div
         id="sidebar"
@@ -54,7 +56,12 @@ class Sidebar extends Component {
           <ul className="nav">
             {this.state.width <= 991 ? <HeaderLinks /> : null}
             {dashboardRoutes.map((prop, key) => {
-              if (!prop.redirect && !prop.noShow)
+              let show = true
+              if (prop.loginRequired && !isAuthenticated) show = false
+              else {
+                if (prop.minimumStatus) show = userLevel >= prop.minimumStatus
+              }
+              if (!prop.redirect && !prop.noShow && show)
                 return (
                   <li
                     className={

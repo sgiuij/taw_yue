@@ -1,6 +1,4 @@
-import React, { Component } from "react"
-import NotificationSystem from "react-notification-system"
-import { connect } from "react-redux"
+import React from "react"
 import { Field, reduxForm } from "redux-form"
 
 import { Col, Form } from "react-bootstrap"
@@ -9,10 +7,8 @@ import { Card } from "../../components/Card/Card.jsx"
 import { FieldInputs } from "../../components/FieldInputs/FieldInputs.jsx"
 import Button from "../../components/CustomButton/CustomButton.jsx"
 
-import { style } from "../../variables/Variables.jsx"
-
 const NewApp = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, submitting, isAuthenticated } = props
   return (
     <div className="wrapper">
       <div className="content">

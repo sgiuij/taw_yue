@@ -5,7 +5,7 @@ const config = require("config")
 const userHandler = require("./userHandler")
 const userValidations = require("./userValidations")
 
-const API_PATH = "/" + config.get("app.name") + "/api/1.0/user"
+const API_PATH = `/${config.get("app.name")}/api/1.0/user`
 
 const routes = [
 	{
@@ -18,21 +18,30 @@ const routes = [
 		}
 	},
 	{
-		path: API_PATH + "/logout",
+		path: API_PATH + "/session/validate",
 		method: "POST",
-		handler: userHandler.getuserByCityName,
+		handler: userHandler.validateSession,
 		config: {
-			tags: ["taw", "api", "user management", "logout"],
-			validate: userValidations.getWeatherByCityName
+			tags: ["taw", "api", "user management", "token management"],
+			validate: userValidations.validate
 		}
 	},
 	{
 		path: API_PATH + "/register",
 		method: "POST",
-		handler: userHandler.getuserByCityName,
+		handler: userHandler.register,
 		config: {
 			tags: ["taw", "api", "user management", "register"],
-			validate: userValidations.getWeatherByCityName
+			validate: userValidations.register
+		}
+	},
+	{
+		path: API_PATH + "/edit",
+		method: "POST",
+		handler: userHandler.createSession,
+		config: {
+			tags: ["taw", "api", "user management", "edit user"],
+			validate: userValidations.edit
 		}
 	}
 ]

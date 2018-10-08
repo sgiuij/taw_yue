@@ -10,6 +10,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import { style } from "../../variables/Variables.jsx"
 
 import dashboardRoutes from "../../routes/dashboard.jsx"
+import { logoutUser } from "../../store/Users"
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest)
@@ -123,7 +124,10 @@ class Dashboard extends Component {
         <NotificationSystem ref="notificationSystem" style={style} />
         <Sidebar {...this.props} />
         <div id="main-panel" className="main-panel" ref="mainPanel">
-          <Header {...this.props} />
+          <Header
+            {...this.props}
+            onLogoutClick={() => dispatch(logoutUser())}
+          />
           <Switch>
             {dashboardRoutes.map((prop, key) => {
               if (prop.name === "Notifications")
@@ -162,11 +166,12 @@ class Dashboard extends Component {
 
 function mapStateToProps(state, ownProps) {
   const {
-    user: { isAuthenticated, errorMessage }
+    user: { isAuthenticated, errorMessage, level }
   } = state
   return {
     isAuthenticated,
-    errorMessage
+    errorMessage,
+    userLevel:level
   }
 }
 

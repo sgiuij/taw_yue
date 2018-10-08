@@ -1,20 +1,15 @@
-const MongoClient = require("mongodb").MongoClient(async function() {
-    // Connection URL
-    const url = "mongodb://mongodb:27017"
-    // Database Name
-    const dbName = "users"
-    let client
+let client
 
-    try {
-        // Use connect method to connect to the Server
-        client = await MongoClient.connect(url)
+const config = require("config")
+var MongoClient = require("mongodb").MongoClient
 
-        const db = client.db(dbName)
-    } catch (err) {
-        console.log(err.stack)
+const getCollection = async collectionName => {
+    if (!client) {
+        client = await MongoClient.connect(config.db.url)
     }
+    const db = client.db(config.db.name)
+    const collection = db.collection(collectionName)
+    return collection
+}
 
-    if (client) {
-        client.close()
-    }
-})()
+module.exports = { getCollection }

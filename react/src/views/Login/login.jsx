@@ -5,12 +5,12 @@ import {
   Col,
   FormGroup,
   ControlLabel,
-  FormControl
+  FormControl,
+  Button
 } from "react-bootstrap"
 import { Redirect } from "react-router-dom"
 
 import { Card } from "../../components/Card/Card.jsx"
-import Button from "../../components/CustomButton/CustomButton.jsx"
 import { loginUser } from "../../store/Users"
 
 class Login extends Component {
@@ -38,14 +38,17 @@ class Login extends Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.id]: e.target.value.trim() })
+    this.setState({ [e.target.id]: e.target.value.trim() })    
   }
 
   handleClick(event) {
+    event.preventDefault();
     const creds = {
       username: this.state.username,
       password: this.state.password
     }
+
+    //@TODO: Validate if username and passsord are entered
     this.props.dispatch(loginUser(creds))
   }
 
@@ -97,7 +100,9 @@ class Login extends Component {
                         <p>{errorMessage}</p>
                       </Row>
                     )}
-                    <Button
+
+                    <Button 
+                      type="submit"
                       bsStyle="info"
                       pullRight
                       fill

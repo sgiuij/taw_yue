@@ -13,22 +13,27 @@ const dashboardRoutes = [
   },
   {
     path: "/user",
-    name: "User Profile",
+    name: "Edit My Profile",
     icon: "pe-7s-user",
-    component: UserProfile
+    component: UserProfile,
+    loginRequired:true,
+    minimumStatus:1
   },
   {
     path: "/login",
     name: "Login",
     icon: "pe-7s-unlock",
     component: Login,
-    noShow: true
+    noShow:true
   },
   {
     path: "/manageusers",
     name: "Manage Users",
     icon: "pe-7s-users",
-    component: ManageUsers
+    component: ManageUsers,
+    loginRequired:true,
+        minimumStatus:2
+
   },
   {
     path: "/apps",
@@ -36,29 +41,28 @@ const dashboardRoutes = [
     icon: "pe-7s-menu",
     component: AllApp
   },
-  {
-    path: "/apps",
-    name: "All Apps",
-    icon: "pe-7s-menu",
-    component: AllApp
-  },
+ 
   {
     path: "/app/new",
     name: "New App",
     icon: "pe-7s-menu",
-    component: AddApp
+    component: AddApp,
+    loginRequired:true,
+    minimumStatus:1
   },
   {
     path: "/app/:appid",
     name: "All Apps",
     icon: "pe-7s-menu",
-    component: AppView
+    component: AppView,
+    noShow:true
   },
   {
     path: "/app/edit/:appid",
     name: "Edit App",
     icon: "pe-7s-menu",
-    component: EditApp
+    component: EditApp,
+    noShow:true
   },
   {
     redirect: true,

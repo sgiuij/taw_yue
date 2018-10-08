@@ -2,7 +2,9 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  TOKEN_CHECK_REQ,
+  TOKEN_CHECK_DONE
 } from "./types"
 
 import initialState from "../../store/initialState"
@@ -19,7 +21,8 @@ export default function auth(state = initialState.user, action) {
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        errorMessage: ""
+        errorMessage: "",
+        level:1
       })
     case LOGIN_FAILURE:
       return Object.assign({}, state, {
@@ -31,6 +34,16 @@ export default function auth(state = initialState.user, action) {
       return Object.assign({}, state, {
         isFetching: true,
         isAuthenticated: false
+      })
+    case TOKEN_CHECK_REQ:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false
+      })
+    case TOKEN_CHECK_DONE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: action.isAuthenticated
       })
     default:
       return state

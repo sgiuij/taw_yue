@@ -2,21 +2,7 @@
 
 const joi = require("joi")
 
-const weatherValidations = {
-  // GET /getWeatherByCityName
-  getWeatherByCityName: {
-    headers: {},
-    query: {
-      cityName: joi
-        .string()
-        .trim()
-        .required()
-        .description("name of the city whose weather is to be fetched")
-    },
-    options: {
-      allowUnknown: true
-    }
-  },
+module.exports = {
   login: {
     payload: {
       username: joi.string().required(),
@@ -26,7 +12,37 @@ const weatherValidations = {
         .max(200)
         .required()
     }
+  },
+  validate: {
+    payload: {
+      token: joi.string().required()
+    }
+  },
+  register: {
+    payload: {
+      username: joi.string().required(),
+      email: joi.string().email(),
+      fname: joi.string().required(),
+      lname: joi.string().required(),
+      about: joi.string(),
+      password: joi
+        .string()
+        .min(8)
+        .max(200)
+        .required()
+    }
+  },
+  edit: {
+    payload: {
+      username: joi.string(),
+      email: joi.string().email(),
+      fname: joi.string(),
+      lname: joi.string(),
+      about: joi.string(),
+      password: joi
+        .string()
+        .min(8)
+        .max(200)
+    }
   }
 }
-
-module.exports = weatherValidations

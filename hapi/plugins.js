@@ -8,7 +8,7 @@ const Vision = require("vision")
 const HapiSwagger = require("hapi-swagger")
 const Good = require("good")
 const config = require("config")
-
+const auth = require("hapi-auth-basic")
 /**
  * Internal modules
  */
@@ -20,7 +20,7 @@ const DEVELOPMENT = "development"
  * exports array of plugins with configuration.
  * @type {Array}
  */
-let plugins = []
+let plugins = [auth]
 
 if (config.util.getEnv("NODE_ENV") === DEVELOPMENT) {
   // add hapi swagger integration

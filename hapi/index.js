@@ -1,10 +1,5 @@
 "use strict"
 
-// require new relic at the top only in production environment
-if (process.env.NODE_ENV === "production") {
-  require("newrelic")
-}
-
 const config = require("config")
 
 const server = require("./server")
@@ -39,7 +34,6 @@ process.on("SIGTERM", gracefulStopServer)
 
 const startServer = async function() {
   try {
-    // add things here before the app starts, like database connection check etc
     await server.start()
     logger.info(
       `server started at port: ${config.get(

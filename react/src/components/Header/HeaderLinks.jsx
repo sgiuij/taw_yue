@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 class HeaderLinks extends Component {
   render() {
-    const { isAuthenticated } = this.props
+    const { isAuthenticated, location, onLogoutClick } = this.props
 
     const notification = (
       <div>
@@ -16,12 +16,12 @@ class HeaderLinks extends Component {
     )
     return (
       <div>
-        <Nav>
+        {/*<Nav>
           <NavItem eventKey={3} href="#">
             <i className="fa fa-search" />
             <p className="hidden-lg hidden-md">Search</p>
           </NavItem>
-        </Nav>
+        </Nav>*/}
         <Nav pullRight>
           {/* <NavDropdown
             eventKey={1}
@@ -37,17 +37,21 @@ class HeaderLinks extends Component {
           </NavDropdown>*/}
 
           {!isAuthenticated && (
-            <NavItem eventKey={2} href="#">
-              <Link to="/login">Login</Link>
+            <NavItem
+              eventKey={2}
+              componentClass={Link}
+              href="/login"
+              to="/login">
+              Login
             </NavItem>
           )}
 
           {isAuthenticated && (
-            <NavItem eventKey={2} href="#">
-              <Link to="/login">Logout</Link>
+            <NavItem eventKey={2} href="#" onClick={onLogoutClick}>
+              Logout
             </NavItem>
           )}
-
+{/*
           <NavDropdown
             eventKey={2}
             title={notification}
@@ -58,7 +62,7 @@ class HeaderLinks extends Component {
             <MenuItem eventKey={2.3}>Notification 3</MenuItem>
             <MenuItem eventKey={2.4}>Notification 4</MenuItem>
             <MenuItem eventKey={2.5}>Another notifications</MenuItem>
-          </NavDropdown>
+          </NavDropdown>*/}
         </Nav>
       </div>
     )

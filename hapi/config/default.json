@@ -5,6 +5,12 @@
 		"logLevel": "info"
 	},
 	"auth": {
-		"secret": "hydroInformaticsIsAwesome"
+		"secret": "hydroInformaticsIsAwesome",
+		"apiUser": "admin",
+		"apiPass": "admin"
+	},
+	"db": {
+		"url": "mongodb://mongodb:27017",
+		"name": "local"
 	}
 }

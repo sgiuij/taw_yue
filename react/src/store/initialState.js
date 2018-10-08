@@ -11,6 +11,7 @@ export default {
 	},
 	user: {
 		isFetching: false,
-		isAuthenticated: false
+		isAuthenticated: false,
+		level:0
 	}
 }

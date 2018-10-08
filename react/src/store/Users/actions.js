@@ -42,3 +42,18 @@ export function receiveLogout() {
 		isAuthenticated: false
 	}
 }
+
+export function checkStoredToken() {
+	return {
+		type: types.TOKEN_CHECK_REQ,
+		isFetching: true,
+		isAuthenticated: false
+	}
+}
+export function storedCheckComplete(isAuthenticated) {
+	return {
+		type: types.TOKEN_CHECK_DONE,
+		isFetching: false,
+		isAuthenticated
+	}
+}
