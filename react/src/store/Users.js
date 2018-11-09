@@ -35,6 +35,16 @@ export function loginUser(creds) {
 	}
 }
 
+export function register(creds) {
+	let config = {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: `username=${creds.username}&password=${creds.password}
+		&email=${creds.email}&about=${creds.about}
+		&lastname=${creds.lastname}&password=${creds.firstname}`
+	}
+}
+
 export function logoutUser() {
 	return dispatch => {
 		dispatch(actions.requestLogout())
