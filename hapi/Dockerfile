@@ -7,6 +7,8 @@ RUN mkdir /app
 #make /app as the working directory
 WORKDIR /app
 
+RUN npm install -g nodemon
+
 COPY package.json yarn.lock /app/
 
 # update the package manager, install git.
