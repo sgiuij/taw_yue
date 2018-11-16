@@ -11,7 +11,7 @@ import {
 import { Redirect } from "react-router-dom"
 
 import { Card } from "../../components/Card/Card.jsx"
-import { loginUser } from "../../store/Users"
+import { loginUser, registerUser } from "../../store/Users"
 
 class Login extends Component {
   constructor(props, context) {

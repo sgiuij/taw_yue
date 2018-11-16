@@ -1,6 +1,7 @@
 import Dashboard from "../views/Dashboard/Dashboard"
 import UserProfile from "../views/UserProfile/UserProfile"
 import Login from "../views/Login/login"
+import Register from "../views/Register/register"
 import ManageUsers from "../views/UserManagement/ManageUser"
 import { AllApp, AppView, EditApp } from "../views/Apps"
 import AddApp from "../views/Apps/new"
